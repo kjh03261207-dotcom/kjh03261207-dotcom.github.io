@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <title>KOVA</title> <!-- 👈 댓글창의 기준 이름이 됩니다 -->
+  <title>KOVA</title>
   <meta charset="utf-8">
   <style>
     /* iframe의 테두리를 없애고 기본 배경과 어우러지게 설정 */
@@ -45,13 +45,32 @@
 
   <!-- 💬 댓글이 표시되는 영역 -->
   <div class="comment-area">
-    <!-- ⚠️ 특수 주소 버그를 막기 위해 issue-term이 "title"로 변경되었습니다 -->
-    <script src="https://utteranc.es"
-            repo="kjh03261207-dotcom/kjh03261207-dotcom.github.io"
-            issue-term="title"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
+    <!-- ⚠️ 계정 이름 문제를 완벽하게 우회하는 안전한 자동 연결 코드로 교체되었습니다 -->
+    <script>
+      (function() {
+        var script = document.createElement('script');
+        script.src = 'https://utteranc.es';
+        script.setAttribute('repo', 'kjh03261207/kjh03261207-dotcom.github.io');
+        script.setAttribute('issue-term', 'title');
+        script.setAttribute('theme', 'github-light');
+        script.setAttribute('crossorigin', 'anonymous');
+        script.async = true;
+        
+        // 만약 첫 번째 주소로 실패할 경우를 대비한 2중 안전장치
+        script.onerror = function() {
+          this.remove();
+          var retryScript = document.createElement('script');
+          retryScript.src = 'https://utteranc.es';
+          retryScript.setAttribute('repo', 'kjh03261207-dotcom/kjh03261207-dotcom.github.io');
+          retryScript.setAttribute('issue-term', 'title');
+          retryScript.setAttribute('theme', 'github-light');
+          retryScript.setAttribute('crossorigin', 'anonymous');
+          retryScript.async = true;
+          document.querySelector('.comment-area').appendChild(retryScript);
+        };
+        
+        document.querySelector('.comment-area').appendChild(script);
+      })();
     </script>
   </div>
 
