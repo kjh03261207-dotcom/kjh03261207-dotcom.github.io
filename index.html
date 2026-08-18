@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <title>KOVA</title>
+  <title>KOVA - Welcome</title>
   <meta charset="utf-8">
   <style>
     /* iframe의 테두리를 없애고 기본 배경과 어우러지게 설정 */
@@ -12,9 +12,12 @@
     }
     /* 댓글 영역 테두리와 여백 설정 */
     .comment-area {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #eee;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid #ccc;
+      min-height: 300px; /* 댓글창 공간 강제 확보 */
+      position: relative;
+      clear: both;
     }
   </style>
 </head>
@@ -44,33 +47,14 @@
   "></iframe>
 
   <!-- 💬 댓글이 표시되는 영역 -->
-  <div class="comment-area">
-    <!-- ⚠️ 계정 이름 문제를 완벽하게 우회하는 안전한 자동 연결 코드로 교체되었습니다 -->
-    <script>
-      (function() {
-        var script = document.createElement('script');
-        script.src = 'https://utteranc.es';
-        script.setAttribute('repo', 'kjh03261207/kjh03261207-dotcom.github.io');
-        script.setAttribute('issue-term', 'title');
-        script.setAttribute('theme', 'github-light');
-        script.setAttribute('crossorigin', 'anonymous');
-        script.async = true;
-        
-        // 만약 첫 번째 주소로 실패할 경우를 대비한 2중 안전장치
-        script.onerror = function() {
-          this.remove();
-          var retryScript = document.createElement('script');
-          retryScript.src = 'https://utteranc.es';
-          retryScript.setAttribute('repo', 'kjh03261207-dotcom/kjh03261207-dotcom.github.io');
-          retryScript.setAttribute('issue-term', 'title');
-          retryScript.setAttribute('theme', 'github-light');
-          retryScript.setAttribute('crossorigin', 'anonymous');
-          retryScript.async = true;
-          document.querySelector('.comment-area').appendChild(retryScript);
-        };
-        
-        document.querySelector('.comment-area').appendChild(script);
-      })();
+  <div class="comment-area" id="utterances-box">
+    <!-- ⚠️ iframe 보안 우회 및 안전한 1번 방 연결 전용 스크립트입니다 -->
+    <script src="https://utteranc.es"
+            repo="kjh03261207-dotcom/kjh03261207-dotcom.github.io"
+            issue-number="1"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
     </script>
   </div>
 
