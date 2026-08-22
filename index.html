@@ -3,41 +3,38 @@
 <head>
   <title>KOVA - Welcome</title>
   <meta charset="utf-8">
-  <!-- 📱 모바일에서 기본 크기로 깔끔하게 보이도록 설정 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { max-width: 800px; margin: 0 auto; padding: 15px; font-family: sans-serif; line-height: 1.5; color: #333; }
     h1 a { text-decoration: none; color: #000; font-size: 28px; }
     
-    /* 메뉴 가로/세로 자동 전환 */
-    ul { list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 8px; }
+    /* 📱 모바일: 가로 2개씩 바둑판 배열 (자동 세로 3줄) */
+    ul { list-style: none; padding: 0; margin: 0 0 20px 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
     ul li a { display: block; padding: 12px; background: #f5f5f7; color: #0071e3; text-decoration: none; border-radius: 6px; text-align: center; font-weight: bold; font-size: 16px; }
     
-    /* 본문 프레임 크기 안정화 */
     #content-frame { width: 100%; height: 350px; border: 1px solid #ddd; border-radius: 8px; display: block; }
-    
-    /* 💬 댓글 영역 (모바일에서도 밀리지 않도록 고정 여백 확보) */
     .comment-area { margin-top: 30px; padding-top: 20px; border-top: 2px solid #ccc; min-height: 400px; clear: both; }
 
-    /* PC 및 태블릿 화면 */
+    /* 💻 PC 및 태블릿: 화면이 넓어지면 가로로 나란히 6개 배치 */
     @media (min-width: 600px) {
-      ul { flex-direction: row; }
-      ul li { flex: 1; }
+      ul { grid-template-columns: repeat(6, 1fr); }
       #content-frame { height: 450px; }
     }
   </style>
 </head>
 <body>
   <h1><a href="index.html">KOVA</a></h1>
+  
+  <!-- 🧭 요청하신 메뉴 이름과 구조 수정 완료 -->
   <ul>
-    <li><a href="1.html" target="content">기본회원의 등록</a></li>
-    <li><a href="2.html" target="content">기타회원의 등록</a></li>
-    <li><a href="3.html" target="content">코바의 거래</a></li>
-    <li><a href="4.html" target="content">코바의 발행과 유지</a></li>
+    <li><a href="1.html" target="content">기본회원</a></li>
+    <li><a href="2.html" target="content">기타회원</a></li>
+    <li><a href="3.html" target="content">코바거래</a></li>
+    <li><a href="4.html" target="content">코바발행</a></li>
+    <li><a href="4.html" target="content">코바유지</a></li>
     <li><a href="5.html" target="content">기타</a></li>
   </ul>
 
-  <!-- 💻 메인 화면 본문 내용 -->
   <iframe name="content" id="content-frame" srcdoc="
     <!DOCTYPE html>
     <html>
@@ -62,7 +59,6 @@
     </html>
   "></iframe>
 
-  <!-- 💬 댓글 창 영역 (src 주소에 /client.js 복구 완료) -->
   <div class="comment-area" id="utterances-box">
     <script src="https://utteranc.es/client.js"
             data-repo="kjh03261207-dotcom/kjh03261207-dotcom.github.io"
